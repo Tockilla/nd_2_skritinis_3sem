@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+  <meta charset="UTF-8">
+  <title>Išmanus termometras</title>
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+  <h1>Išmanus termometras - ką rengtis?</h1>
+
+  <div class="thermo-container">
+    <div class="thermometer">
+      <div id="thermo-fill" class="thermo-fill"></div>
+    </div>
+  </div>
+
+  <div id="temp-value" class="temp-value">0°C</div>
+
+  <div class="controls">
+    <button id="minus" class="btn">−</button>
+    <input type="range" min="-50" max="50" value="0" id="temp-slider">
+    <button id="plus" class="btn">+</button>
+  </div>
+
+  <h3>Rekomenduojama apranga:</h3>
+  <div id="clothes-text">Pasirink temperatūrą</div>
+
+  <div class="scale-select">
+    <label for="scale">Skalė:</label>
+    <select id="scale">
+      <option value="C">°C - Celsijus</option>
+      <option value="F">°F - Farenheitas</option>
+      <option value="K">K - Kelvinas</option>
+    </select>
+  </div>
+
+  <div class="person-select">
+    <label for="personType">Aprangos tipas:</label>
+    <select id="personType">
+      <option value="unisex">Unisex</option>
+      <option value="boy">👦 Berniukas</option>
+      <option value="girl">👧 Mergaitė</option>
+      <option value="man">👨 Vyras</option>
+      <option value="woman">👩 Moteris</option>
+    </select>
+  </div>
+
+  <h2>Laisvai pozicionuojamos nuotraukos</h2>
+  <div id="clothes-area">
+  <img id="clothes-img-1" class="clothes-img" src="" alt="Rūbas 1">
+  <img id="clothes-img-2" class="clothes-img" src="" alt="Rūbas 2">
+  <img id="clothes-img-3" class="clothes-img" src="" alt="Rūbas 3">
+  <img id="clothes-img-4" class="clothes-img" src="" alt="Rūbas 4">
+</div>
+
+  <script src="main.js"></script>
+</body>
+</html>
