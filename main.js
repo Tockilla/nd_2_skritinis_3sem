@@ -1,4 +1,4 @@
-// Elementų selektoriai
+
 const slider      = document.getElementById("temp-slider");
 const minusBtn    = document.getElementById("minus");
 const plusBtn     = document.getElementById("plus");
@@ -7,18 +7,18 @@ const tempValue   = document.getElementById("temp-value");
 const scaleSelect = document.getElementById("scale");
 const clothesText = document.getElementById("clothes-text");
 
-// Dviejų drabužių sluoksnių elementai
+
 const img1 = document.getElementById("clothes-img-1");
 const img2 = document.getElementById("clothes-img-2");
 const img3 = document.getElementById("clothes-img-3");
 const img4 = document.getElementById("clothes-img-4");
-let tempC = 0; // visada Celsijais
+let tempC = 0; 
 
-// Konvertavimas
+
 function toF(c){ return c * 9/5 + 32; }
 function toK(c){ return c + 273.15; }
 
-// Formatuojame temperatūrą pagal pasirinką skalę
+
 function formatTemp(c){
   const s = scaleSelect.value;
   if(s === "C") return `${c.toFixed(1)}°C`;
@@ -26,7 +26,7 @@ function formatTemp(c){
   return `${toK(c).toFixed(2)} K`;
 }
 
-// Grąžina spalvą pagal Celsijų
+
 function getColor(c){
   if(c < 0){
     const t = (c + 50)/50;
@@ -42,15 +42,16 @@ function getColor(c){
   }
 }
 
-// Pagrindinė atnaujinimo funkcija
+
 function updateUI(){
-  // 1) Termometro dalis
+  
+
   tempValue.textContent = formatTemp(tempC);
   const pct = (tempC + 50)/100*100;
   thermoFill.style.height     = pct + "%";
   thermoFill.style.background = getColor(tempC);
 
-  // 2) Aprangos tekstas ir vienas stačiakampis paveiksliukas
+  
   if (tempC <= -30) {
     clothesText.textContent = "Ekstremali šalčio apranga...";
   } else if (tempC <= -10) {
@@ -67,17 +68,17 @@ function updateUI(){
     clothesText.textContent = "Labai karšta: kuo mažiau rūbų.";
   }
 
-  // 3) Drabužių sluoksniai (dvi nuotraukos)
+  
   updateClothesImages();
 }
 function updateClothesImages() {
-  // 1) paslepiame visus sluoksnius
+  
   [img1, img2, img3, img4].forEach(img => {
     img.style.display = "none";
-    img.src = "";  // išvalome, kad vėliau galėtume patikrinti
+    img.src = "";
   });
 
-  // 2) pagal tempC intervalą nustatome tekstą ir paveiksliukus
+  
   if (tempC <= -30) {
     clothesText.textContent = "Ekstremali šalčio apranga: pūkinė striukė, pirštinės...";
     img1.src = "img/kailine.jpg";
@@ -128,23 +129,14 @@ function updateClothesImages() {
     img4.src = "";
   }
 
-  // 3) parodome tik tuos, kurių src nenustatytas tuščiai
+
   [img1, img2, img3, img4].forEach(img => {
     if (img.src) {
       img.style.display = "block";
     }
   });
 }
-// Funkcija kuri rodo / paslepia ir pozicionuoja img1, img2 pagal tempC
 
-
-
-
-
-
-
-
-// Event’ai
 slider.addEventListener("input", () => {
   tempC = Number(slider.value);
   updateUI();
@@ -157,5 +149,5 @@ plusBtn.addEventListener("click", () => {
 });
 scaleSelect.addEventListener("change", updateUI);
 
-// Pradinė būsena
+
 updateUI();
